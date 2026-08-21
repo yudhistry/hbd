@@ -5,26 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>🌙 Barakallah Fii Umrik 🤲</title>
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      html,
-      body {
-        overflow-x: hidden;
-      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { overflow-x: hidden; }
       body {
         font-family: 'Segoe UI', 'Trebuchet MS', sans-serif;
         min-height: 100vh;
-        background: linear-gradient(
-          135deg,
-          #1a0b2e 0%,
-          #2d1b4e 25%,
-          #4a2c6d 50%,
-          #6b3fa0 75%,
-          #8b5fbf 100%
-        );
+        background: linear-gradient(135deg, #1a0b2e 0%, #2d1b4e 25%, #4a2c6d 50%, #6b3fa0 75%, #8b5fbf 100%);
         background-size: 400% 400%;
         animation: bgShift 15s ease infinite;
         display: flex;
@@ -36,20 +22,13 @@
         padding: 20px 10px;
       }
       @keyframes bgShift {
-        0%,
-        100% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
       }
       canvas {
         position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
         pointer-events: none;
         z-index: 1;
       }
@@ -63,9 +42,7 @@
       }
       h1 {
         font-size: clamp(1.6rem, 5vw, 3.5rem);
-        animation:
-          bounceIn 1.2s ease,
-          glow 2s ease-in-out infinite alternate;
+        animation: bounceIn 1.2s ease, glow 2s ease-in-out infinite alternate;
         margin-bottom: 10px;
       }
       .name {
@@ -82,33 +59,17 @@
         word-break: break-word;
       }
       @keyframes rainbow {
-        0% {
-          background-position: 0% 50%;
-        }
-        100% {
-          background-position: 300% 50%;
-        }
+        0% { background-position: 0% 50%; }
+        100% { background-position: 300% 50%; }
       }
       @keyframes bounceIn {
-        0% {
-          transform: scale(0);
-          opacity: 0;
-        }
-        60% {
-          transform: scale(1.2);
-          opacity: 1;
-        }
-        100% {
-          transform: scale(1);
-        }
+        0% { transform: scale(0); opacity: 0; }
+        60% { transform: scale(1.2); opacity: 1; }
+        100% { transform: scale(1); }
       }
       @keyframes glow {
-        from {
-          filter: drop-shadow(0 0 10px #ffd700);
-        }
-        to {
-          filter: drop-shadow(0 0 25px #c77dff);
-        }
+        from { filter: drop-shadow(0 0 10px #ffd700); }
+        to { filter: drop-shadow(0 0 25px #c77dff); }
       }
       .message {
         font-size: clamp(0.95rem, 2.5vw, 1.4rem);
@@ -118,13 +79,8 @@
         font-style: italic;
         padding: 0 10px;
       }
-      @keyframes fadeIn {
-        to {
-          opacity: 1;
-        }
-      }
+      @keyframes fadeIn { to { opacity: 1; } }
 
-      /* Kue */
       .cake {
         position: relative;
         margin: 20px auto;
@@ -173,13 +129,7 @@
         transform: translateX(-50%);
         width: 8px;
         height: 35px;
-        background: repeating-linear-gradient(
-          45deg,
-          #ffd700,
-          #ffd700 4px,
-          #fff 4px,
-          #fff 8px
-        );
+        background: repeating-linear-gradient(45deg, #ffd700, #ffd700 4px, #fff 4px, #fff 8px);
         border-radius: 2px;
       }
       .flame {
@@ -189,32 +139,17 @@
         transform: translateX(-50%);
         width: 14px;
         height: 22px;
-        background: radial-gradient(
-          circle at 50% 70%,
-          #fff 0%,
-          #ffeb3b 30%,
-          #ff9800 70%,
-          #ff5722 100%
-        );
+        background: radial-gradient(circle at 50% 70%, #fff 0%, #ffeb3b 30%, #ff9800 70%, #ff5722 100%);
         border-radius: 50% 50% 20% 20%;
         animation: flicker 0.3s ease-in-out infinite alternate;
-        box-shadow:
-          0 0 20px #ffeb3b,
-          0 0 40px #ff9800;
+        box-shadow: 0 0 20px #ffeb3b, 0 0 40px #ff9800;
       }
       @keyframes flicker {
-        from {
-          transform: translateX(-50%) scale(1) rotate(-2deg);
-        }
-        to {
-          transform: translateX(-50%) scale(1.1, 0.9) rotate(2deg);
-        }
+        from { transform: translateX(-50%) scale(1) rotate(-2deg); }
+        to { transform: translateX(-50%) scale(1.1, 0.9) rotate(2deg); }
       }
-      .flame.out {
-        display: none;
-      }
+      .flame.out { display: none; }
 
-      /* Balon */
       .balloon {
         position: fixed;
         bottom: -150px;
@@ -234,17 +169,9 @@
         background: rgba(255, 255, 255, 0.6);
       }
       @keyframes floatUp {
-        0% {
-          transform: translateY(0) translateX(0);
-          opacity: 1;
-        }
-        50% {
-          transform: translateY(-50vh) translateX(20px);
-        }
-        100% {
-          transform: translateY(-110vh) translateX(-20px);
-          opacity: 0.7;
-        }
+        0% { transform: translateY(0) translateX(0); opacity: 1; }
+        50% { transform: translateY(-50vh) translateX(20px); }
+        100% { transform: translateY(-110vh) translateX(-20px); opacity: 0.7; }
       }
 
       button {
@@ -259,9 +186,7 @@
         border-radius: 50px;
         cursor: pointer;
         box-shadow: 0 5px 20px rgba(107, 63, 160, 0.6);
-        transition:
-          transform 0.2s,
-          box-shadow 0.2s;
+        transition: transform 0.2s, box-shadow 0.2s;
         z-index: 3;
         position: relative;
       }
@@ -269,13 +194,9 @@
         transform: translateY(-3px) scale(1.05);
         box-shadow: 0 8px 25px rgba(255, 215, 0, 0.7);
       }
-      button:active {
-        transform: translateY(0) scale(0.98);
-      }
+      button:active { transform: translateY(0) scale(0.98); }
 
-      .hidden {
-        display: none;
-      }
+      .hidden { display: none; }
 
       /* ============ MODAL SCROLLABLE RESPONSIVE ============ */
       .modal-overlay {
@@ -287,7 +208,7 @@
         z-index: 100;
         display: flex;
         justify-content: center;
-        align-items: flex-start; /* ubah ke flex-start agar scroll bisa dimulai dari atas */
+        align-items: flex-start;
         padding: 20px 15px;
         opacity: 0;
         animation: modalFadeIn 1s ease forwards 0.5s;
@@ -295,25 +216,11 @@
         overflow-x: hidden;
         -webkit-overflow-scrolling: touch;
       }
-      @keyframes modalFadeIn {
-        to {
-          opacity: 1;
-        }
-      }
-      .modal-overlay.closing {
-        animation: modalFadeOut 0.8s ease forwards;
-      }
-      @keyframes modalFadeOut {
-        to {
-          opacity: 0;
-          visibility: hidden;
-        }
-      }
+      @keyframes modalFadeIn { to { opacity: 1; } }
+      .modal-overlay.closing { animation: modalFadeOut 0.8s ease forwards; }
+      @keyframes modalFadeOut { to { opacity: 0; visibility: hidden; } }
 
-      /* Custom scrollbar */
-      .modal-overlay::-webkit-scrollbar {
-        width: 10px;
-      }
+      .modal-overlay::-webkit-scrollbar { width: 10px; }
       .modal-overlay::-webkit-scrollbar-track {
         background: rgba(255, 215, 0, 0.1);
         border-radius: 10px;
@@ -323,18 +230,10 @@
         border-radius: 10px;
         border: 2px solid rgba(20, 10, 40, 0.3);
       }
-      .modal-overlay::-webkit-scrollbar-thumb:hover {
-        background: linear-gradient(180deg, #ffed4e, #d891ff);
-      }
 
       .modal-card {
         position: relative;
-        background: linear-gradient(
-          135deg,
-          rgba(74, 44, 109, 0.6),
-          rgba(107, 63, 160, 0.6),
-          rgba(157, 78, 221, 0.6)
-        );
+        background: linear-gradient(135deg, rgba(74, 44, 109, 0.6), rgba(107, 63, 160, 0.6), rgba(157, 78, 221, 0.6));
         backdrop-filter: blur(15px);
         -webkit-backdrop-filter: blur(15px);
         border: 2px solid rgba(255, 215, 0, 0.4);
@@ -342,22 +241,15 @@
         padding: clamp(25px, 5vw, 45px) clamp(20px, 4vw, 50px);
         width: 100%;
         max-width: 600px;
-        margin: auto; /* centering vertical saat konten pendek */
+        margin: auto;
         text-align: center;
-        box-shadow:
-          0 20px 60px rgba(107, 63, 160, 0.6),
-          inset 0 0 40px rgba(255, 215, 0, 0.1);
+        box-shadow: 0 20px 60px rgba(107, 63, 160, 0.6), inset 0 0 40px rgba(255, 215, 0, 0.1);
         transform: scale(0.85) translateY(30px);
-        animation: modalCardIn 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards
-          0.7s;
+        animation: modalCardIn 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.7s;
         overflow: hidden;
         z-index: 2;
       }
-      @keyframes modalCardIn {
-        to {
-          transform: scale(1) translateY(0);
-        }
-      }
+      @keyframes modalCardIn { to { transform: scale(1) translateY(0); } }
 
       .modal-card::before {
         content: '';
@@ -366,22 +258,12 @@
         left: -50%;
         width: 200%;
         height: 200%;
-        background: conic-gradient(
-          from 0deg,
-          transparent,
-          rgba(255, 215, 0, 0.15),
-          transparent 30%
-        );
+        background: conic-gradient(from 0deg, transparent, rgba(255, 215, 0, 0.15), transparent 30%);
         animation: rotateShine 8s linear infinite;
         pointer-events: none;
       }
-      @keyframes rotateShine {
-        to {
-          transform: rotate(360deg);
-        }
-      }
+      @keyframes rotateShine { to { transform: rotate(360deg); } }
 
-      /* Ornamen Bulan Sabit & Bintang */
       .ornament {
         position: absolute;
         font-size: clamp(1.5rem, 4vw, 2.5rem);
@@ -389,35 +271,13 @@
         z-index: 2;
         filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
       }
-      .ornament.tl {
-        top: 10px;
-        left: 15px;
-      }
-      .ornament.tr {
-        top: 10px;
-        right: 15px;
-        animation-delay: 0.5s;
-      }
-      .ornament.bl {
-        bottom: 10px;
-        left: 15px;
-        animation-delay: 1s;
-      }
-      .ornament.br {
-        bottom: 10px;
-        right: 15px;
-        animation-delay: 1.5s;
-      }
+      .ornament.tl { top: 10px; left: 15px; }
+      .ornament.tr { top: 10px; right: 15px; animation-delay: 0.5s; }
+      .ornament.bl { bottom: 10px; left: 15px; animation-delay: 1s; }
+      .ornament.br { bottom: 10px; right: 15px; animation-delay: 1.5s; }
       @keyframes twinkle {
-        0%,
-        100% {
-          transform: scale(1) rotate(0deg);
-          opacity: 0.8;
-        }
-        50% {
-          transform: scale(1.3) rotate(10deg);
-          opacity: 1;
-        }
+        0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+        50% { transform: scale(1.3) rotate(10deg); opacity: 1; }
       }
 
       .arabic-text {
@@ -460,10 +320,7 @@
         text-align: justify;
         word-wrap: break-word;
       }
-      .modal-message .highlight {
-        color: #ffd700;
-        font-weight: bold;
-      }
+      .modal-message .highlight { color: #ffd700; font-weight: bold; }
       .modal-message .doa {
         display: block;
         margin: 12px 0;
@@ -483,7 +340,6 @@
         border: 1px dashed rgba(255, 215, 0, 0.4);
       }
 
-      /* Tombol close sticky di bawah modal */
       .modal-close {
         background: linear-gradient(45deg, #ffd700, #daa520);
         color: #2d1b4e;
@@ -497,19 +353,17 @@
         font-size: clamp(1rem, 2.5vw, 1.15rem);
         z-index: 3;
       }
-      .modal-close:hover {
-        box-shadow: 0 8px 25px rgba(255, 215, 0, 0.85);
-      }
+      .modal-close:hover { box-shadow: 0 8px 25px rgba(255, 215, 0, 0.85); }
 
-      /* ============ ANIMASI LOVE UNGU & ISLAMI ============ */
+      /* ============ LOVE CONTAINER - DIPINDAH KE OVERLAY ============ */
       .love-container {
-        position: absolute;
+        position: fixed;
         inset: 0;
         pointer-events: none;
         overflow: hidden;
-        z-index: 1;
-        border-radius: 25px;
+        z-index: 101; /* di atas modal-card (z-index: 2) */
       }
+
       .love {
         position: absolute;
         bottom: -60px;
@@ -523,19 +377,13 @@
           transform: translateY(0) translateX(0) rotate(0deg) scale(1);
           opacity: 0;
         }
-        10% {
-          opacity: 1;
-        }
+        10% { opacity: 1; }
         50% {
-          transform: translateY(-50vh) translateX(var(--sway, 30px))
-            rotate(180deg) scale(1.1);
+          transform: translateY(-50vh) translateX(var(--sway, 30px)) rotate(180deg) scale(1.1);
         }
-        90% {
-          opacity: 0.9;
-        }
+        90% { opacity: 0.9; }
         100% {
-          transform: translateY(-110vh) translateX(calc(var(--sway, 30px) * -1))
-            rotate(360deg) scale(0.8);
+          transform: translateY(-110vh) translateX(calc(var(--sway, 30px) * -1)) rotate(360deg) scale(0.8);
           opacity: 0;
         }
       }
@@ -546,28 +394,15 @@
         height: 8px;
         background: #ffd700;
         border-radius: 50%;
-        box-shadow:
-          0 0 10px #ffd700,
-          0 0 20px #c77dff;
+        box-shadow: 0 0 10px #ffd700, 0 0 20px #c77dff;
         animation: sparkleFloat linear infinite;
         pointer-events: none;
       }
       @keyframes sparkleFloat {
-        0% {
-          transform: translateY(0) scale(0);
-          opacity: 0;
-        }
-        20% {
-          opacity: 1;
-          transform: translateY(-20vh) scale(1);
-        }
-        80% {
-          opacity: 1;
-        }
-        100% {
-          transform: translateY(-110vh) scale(0.3);
-          opacity: 0;
-        }
+        0% { transform: translateY(0) scale(0); opacity: 0; }
+        20% { opacity: 1; transform: translateY(-20vh) scale(1); }
+        80% { opacity: 1; }
+        100% { transform: translateY(-110vh) scale(0.3); opacity: 0; }
       }
 
       .bg-crescent {
@@ -582,101 +417,39 @@
         z-index: 0;
       }
       @keyframes bgHeartBeat {
-        0%,
-        100% {
-          transform: translate(-50%, -50%) scale(1) rotate(-15deg);
-          opacity: 0.08;
-        }
-        50% {
-          transform: translate(-50%, -50%) scale(1.1) rotate(-10deg);
-          opacity: 0.12;
-        }
+        0%, 100% { transform: translate(-50%, -50%) scale(1) rotate(-15deg); opacity: 0.08; }
+        50% { transform: translate(-50%, -50%) scale(1.1) rotate(-10deg); opacity: 0.12; }
       }
 
-      /* ============ RESPONSIVE BREAKPOINTS ============ */
       @media (max-width: 600px) {
-        body {
-          padding: 10px 5px;
-        }
-        .modal-overlay {
-          padding: 10px 8px;
-        }
-        .modal-card {
-          border-radius: 20px;
-        }
-        .ornament.tl {
-          top: 8px;
-          left: 10px;
-        }
-        .ornament.tr {
-          top: 8px;
-          right: 10px;
-        }
-        .ornament.bl {
-          bottom: 8px;
-          left: 10px;
-        }
-        .ornament.br {
-          bottom: 8px;
-          right: 10px;
-        }
-        .modal-message {
-          text-align: left;
-        }
-        .modal-message .doa {
-          padding: 10px 12px;
-        }
+        body { padding: 10px 5px; }
+        .modal-overlay { padding: 10px 8px; }
+        .modal-card { border-radius: 20px; }
+        .ornament.tl { top: 8px; left: 10px; }
+        .ornament.tr { top: 8px; right: 10px; }
+        .ornament.bl { bottom: 8px; left: 10px; }
+        .ornament.br { bottom: 8px; right: 10px; }
+        .modal-message { text-align: left; }
+        .modal-message .doa { padding: 10px 12px; }
       }
 
       @media (max-width: 380px) {
-        .modal-card {
-          padding: 20px 15px;
-        }
-        .arabic-text {
-          font-size: 1.2rem;
-        }
-        .ornament {
-          font-size: 1.3rem;
-        }
-        .modal-message {
-          font-size: 0.88rem;
-          line-height: 1.7;
-        }
+        .modal-card { padding: 20px 15px; }
+        .arabic-text { font-size: 1.2rem; }
+        .ornament { font-size: 1.3rem; }
+        .modal-message { font-size: 0.88rem; line-height: 1.7; }
       }
 
-      @media (min-width: 1200px) {
-        .modal-card {
-          max-width: 620px;
-        }
-      }
+      @media (min-width: 1200px) { .modal-card { max-width: 620px; } }
 
-      /* Landscape mode untuk mobile */
       @media (max-height: 500px) and (orientation: landscape) {
-        .modal-overlay {
-          align-items: flex-start;
-          padding: 10px;
-        }
-        .modal-card {
-          padding: 20px 25px;
-        }
-        .ornament {
-          font-size: 1.3rem;
-        }
-        .arabic-text {
-          font-size: 1.2rem;
-          margin-bottom: 8px;
-        }
-        .modal-title {
-          margin-bottom: 10px;
-        }
-        .modal-message {
-          margin-bottom: 15px;
-          line-height: 1.5;
-        }
-        .modal-message .doa {
-          margin: 8px 0;
-          padding: 8px 10px;
-        }
+        .modal-overlay { align-items: flex-start; padding: 10px; }
+        .modal-card { padding: 20px 25px; }
+        .ornament { font-size: 1.3rem; }
+        .arabic-text { font-size: 1.2rem; margin-bottom: 8px; }
+        .modal-title { margin-bottom: 10px; }
+        .modal-message { margin-bottom: 15px; line-height: 1.5; }
+        .modal-message .doa { margin: 8px 0; padding: 8px 10px; }
       }
     </style>
   </head>
@@ -686,9 +459,7 @@
     <div class="content">
       <h1>🌙 Barakallah Fii Umrik 🌙</h1>
       <div class="name">Iis Hidayati</div>
-      <p class="message">
-        ✨ Semoga Allah memberkahi usiamu dan melimpahkan rahmat-Nya ✨
-      </p>
+      <p class="message">✨ Semoga Allah memberkahi usiamu dan melimpahkan rahmat-Nya ✨</p>
 
       <div class="cake">
         <div class="plate"></div>
@@ -701,17 +472,16 @@
 
       <button id="blowBtn">🌬️ Tiup Lilin</button>
       <button id="celebrateBtn" class="hidden">🎊 Rayakan Lagi!</button>
-      <p>
-        <small>by <strong>is.tira</strong></small>
-      </p>
+      <p><small>by <strong>is.tira</strong></small></p>
     </div>
 
     <!-- ============ MODAL ISLAMI SCROLLABLE ============ -->
     <div class="modal-overlay" id="modal">
-      <div class="modal-card">
-        <div class="bg-crescent">☪</div>
-        <div class="love-container" id="loveContainer"></div>
+      <!-- ✅ LOVE CONTAINER DIPINDAH KE SINI (di luar modal-card) -->
+      <div class="love-container" id="loveContainer"></div>
+      <div class="bg-crescent">☪</div>
 
+      <div class="modal-card">
         <span class="ornament tl">🌙</span>
         <span class="ornament tr">⭐</span>
         <span class="ornament bl">⭐</span>
@@ -720,75 +490,31 @@
         <div class="arabic-text">بَارَكَ اللهُ فِيْ عُمْرِكَ</div>
         <h2 class="modal-title">🤲 Barakallah Fii Umrik 🤲</h2>
         <div class="modal-message">
-          <span class="highlight"
-            >Ya Allah, Yang Maha Pengasih lagi Maha Penyayang,</span
-          >
+          <span class="highlight">Ya Allah, Yang Maha Pengasih lagi Maha Penyayang,</span>
           <br />
-          Di hari yang penuh berkah ini, aku memanjatkan do'a dari hati ini
-          untuk wanita terfavorit (Iis Hidayati binti Ahmad bin Kuba):
+          Di hari yang penuh berkah ini, aku memanjatkan do'a dari hati ini untuk wanita terfavorit (Iis Hidayati binti Ahmad bin Kuba):
 
-          <span class="doa">
-            🌟 Semoga Allah <span class="highlight">memberkahi usiamu</span>,
-            menjadikan setiap detiknya penuh ketaatan dan keimanan.
-          </span>
-
-          <span class="doa">
-            🌟 Semoga Allah
-            <span class="highlight">melimpahkan kesehatan</span>, rezeki yang
-            halal lagi berkah, dan kemudahan dalam setiap urusan.
-          </span>
-
-          <span class="doa">
-            🌟 Semoga Allah
-            <span class="highlight">menjaga iman dan Islam-mu</span>, serta
-            mengumpulkanmu bersama orang-orang yang dicintai-Nya di surga kelak.
-          </span>
-
-          <span class="doa">
-            🌟 Semoga menjadi pribadi yang
-            <span class="highlight">lebih baik dari tahun sebelumnya</span>,
-            semakin dekat dengan Allah, dan bermanfaat bagi sesama.
-          </span>
-
-          <span class="doa">
-            🌟 Semoga Allah
-            <span class="highlight">mudahkan segala urusanmu</span>, lapangkan
-            rezekimu, dan jadikan setiap langkahmu dalam ketaatan kepada-Nya.
-          </span>
-
-          <span class="doa">
-            🌟 Semoga Allah
-            <span class="highlight">lindungi dirimu dan keluarga</span> dari
-            segala marabahaya, serta berikan kebahagiaan dunia dan akhirat.
-          </span>
-
-          <span class="doa">
-            🌟 Semoga Iis <span class="highlight">memaafkanku</span> dari segala
-            kesalahanku selama ini. Terima kasih untuk semua kebaikanmu.
-          </span>
+          <span class="doa">🌟 Semoga Allah <span class="highlight">memberkahi usiamu</span>, menjadikan setiap detiknya penuh ketaatan dan keimanan.</span>
+          <span class="doa">🌟 Semoga Allah <span class="highlight">melimpahkan kesehatan</span>, rezeki yang halal lagi berkah, dan kemudahan dalam setiap urusan.</span>
+          <span class="doa">🌟 Semoga Allah <span class="highlight">menjaga iman dan Islam-mu</span>, serta mengumpulkanmu bersama orang-orang yang dicintai-Nya di surga kelak.</span>
+          <span class="doa">🌟 Semoga menjadi pribadi yang <span class="highlight">lebih baik dari tahun sebelumnya</span>, semakin dekat dengan Allah, dan bermanfaat bagi sesama.</span>
+          <span class="doa">🌟 Semoga Allah <span class="highlight">mudahkan segala urusanmu</span>, lapangkan rezekimu, dan jadikan setiap langkahmu dalam ketaatan kepada-Nya.</span>
+          <span class="doa">🌟 Semoga Allah <span class="highlight">lindungi dirimu dan keluarga</span> dari segala marabahaya, serta berikan kebahagiaan dunia dan akhirat.</span>
+          <span class="doa">🌟 Semoga Iis <span class="highlight">memaafkanku</span> dari segala kesalahanku selama ini. Terima kasih untuk semua kebaikanmu.</span>
 
           <span class="quote">
-            <em
-              >"Barangsiapa yang menempuh jalan untuk mencari ilmu, maka Allah
-              akan memudahkan baginya jalan menuju surga."</em
-            >
+            <em>"Barangsiapa yang menempuh jalan untuk mencari ilmu, maka Allah akan memudahkan baginya jalan menuju surga."</em>
             <br />
             <small style="color: #ffd700">— HR. Muslim</small>
           </span>
-
           <span class="quote">
-            <em
-              >"Dan apabila hamba-hamba-Ku bertanya kepadamu tentang Aku, maka
-              (jawablah), bahwasanya Aku adalah dekat."</em
-            >
+            <em>"Dan apabila hamba-hamba-Ku bertanya kepadamu tentang Aku, maka (jawablah), bahwasanya Aku adalah dekat."</em>
             <br />
             <small style="color: #ffd700">— QS. Al-Baqarah: 186</small>
           </span>
 
           <br />
-          <span class="highlight" style="font-size: 1.2em"
-            >آمين يا رب العالمين</span
-          >
+          <span class="highlight" style="font-size: 1.2em">آمين يا رب العالمين</span>
           <br />
           <em>Aamiin Yaa Rabbal 'Aalamiin</em> 🤲
         </div>
@@ -808,15 +534,7 @@
       resize()
       window.addEventListener('resize', resize)
 
-      const colors = [
-        '#ffd700',
-        '#e0aaff',
-        '#c77dff',
-        '#9d4edd',
-        '#7b2cbf',
-        '#ffffff',
-        '#daa520',
-      ]
+      const colors = ['#ffd700','#e0aaff','#c77dff','#9d4edd','#7b2cbf','#ffffff','#daa520']
       const confetti = []
       for (let i = 0; i < 120; i++) {
         confetti.push({
@@ -862,8 +580,7 @@
           const angle = ((Math.PI * 2) / 40) * i
           const speed = Math.random() * 4 + 2
           fireworks.push({
-            x,
-            y,
+            x, y,
             vx: Math.cos(angle) * speed,
             vy: Math.sin(angle) * speed,
             life: 1,
@@ -911,23 +628,14 @@
       /* ====== ANIMASI LOVE UNGU & ISLAMI DI MODAL ====== */
       const loveContainer = document.getElementById('loveContainer')
       const islamicEmojis = ['🤲', '🌙', '⭐', '✨', '💜', '💟', '🕌', '📿']
-      const purpleShades = [
-        '#e0aaff',
-        '#c77dff',
-        '#9d4edd',
-        '#7b2cbf',
-        '#5a189a',
-        '#d891ff',
-      ]
+      const purpleShades = ['#e0aaff','#c77dff','#9d4edd','#7b2cbf','#5a189a','#d891ff']
 
       function createLove() {
         const love = document.createElement('div')
         love.className = 'love'
         const isPurple = Math.random() < 0.5
         love.textContent = isPurple
-          ? Math.random() < 0.7
-            ? '💜'
-            : '💟'
+          ? Math.random() < 0.7 ? '💜' : '💟'
           : islamicEmojis[Math.floor(Math.random() * islamicEmojis.length)]
 
         const size = Math.random() * 28 + 18
@@ -938,8 +646,7 @@
         love.style.animationDuration = duration + 's'
         love.style.setProperty('--sway', Math.random() * 80 - 40 + 'px')
 
-        const glowColor =
-          purpleShades[Math.floor(Math.random() * purpleShades.length)]
+        const glowColor = purpleShades[Math.floor(Math.random() * purpleShades.length)]
         love.style.filter = `drop-shadow(0 0 ${size / 3}px ${glowColor})`
 
         loveContainer.appendChild(love)
@@ -966,12 +673,8 @@
       }, 300)
 
       setTimeout(() => {
-        for (let i = 0; i < 20; i++) {
-          setTimeout(createLove, i * 80)
-        }
-        for (let i = 0; i < 15; i++) {
-          setTimeout(createSparkle, i * 100)
-        }
+        for (let i = 0; i < 20; i++) setTimeout(createLove, i * 80)
+        for (let i = 0; i < 15; i++) setTimeout(createSparkle, i * 100)
       }, 1500)
 
       /* ====== MODAL CONTROL ====== */
@@ -981,10 +684,7 @@
         clearInterval(loveInterval)
         setTimeout(() => modal.remove(), 800)
         for (let i = 0; i < 12; i++) {
-          setTimeout(
-            () => createFirework(Math.random() * W, Math.random() * H * 0.6),
-            i * 150,
-          )
+          setTimeout(() => createFirework(Math.random() * W, Math.random() * H * 0.6), i * 150)
         }
       })
 
@@ -1010,10 +710,7 @@
         celebrateBtn.classList.add('hidden')
         blowBtn.classList.remove('hidden')
         for (let i = 0; i < 8; i++) {
-          setTimeout(
-            () => createFirework(Math.random() * W, Math.random() * H * 0.6),
-            i * 200,
-          )
+          setTimeout(() => createFirework(Math.random() * W, Math.random() * H * 0.6), i * 200)
         }
       })
 
