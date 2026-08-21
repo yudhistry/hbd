@@ -1,0 +1,1027 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🌙 Barakallah Fii Umrik 🤲</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        overflow-x: hidden;
+      }
+      body {
+        font-family: 'Segoe UI', 'Trebuchet MS', sans-serif;
+        min-height: 100vh;
+        background: linear-gradient(
+          135deg,
+          #1a0b2e 0%,
+          #2d1b4e 25%,
+          #4a2c6d 50%,
+          #6b3fa0 75%,
+          #8b5fbf 100%
+        );
+        background-size: 400% 400%;
+        animation: bgShift 15s ease infinite;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        padding: 20px 10px;
+      }
+      @keyframes bgShift {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+      canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+      }
+      .content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        padding: 20px;
+        width: 100%;
+        max-width: 800px;
+      }
+      h1 {
+        font-size: clamp(1.6rem, 5vw, 3.5rem);
+        animation:
+          bounceIn 1.2s ease,
+          glow 2s ease-in-out infinite alternate;
+        margin-bottom: 10px;
+      }
+      .name {
+        display: inline-block;
+        background: linear-gradient(45deg, #ffd700, #e0aaff, #c77dff, #ffd700);
+        background-size: 300% 300%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: rainbow 4s linear infinite;
+        font-size: clamp(2rem, 7vw, 5rem);
+        font-weight: bold;
+        text-shadow: none;
+        word-break: break-word;
+      }
+      @keyframes rainbow {
+        0% {
+          background-position: 0% 50%;
+        }
+        100% {
+          background-position: 300% 50%;
+        }
+      }
+      @keyframes bounceIn {
+        0% {
+          transform: scale(0);
+          opacity: 0;
+        }
+        60% {
+          transform: scale(1.2);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+      @keyframes glow {
+        from {
+          filter: drop-shadow(0 0 10px #ffd700);
+        }
+        to {
+          filter: drop-shadow(0 0 25px #c77dff);
+        }
+      }
+      .message {
+        font-size: clamp(0.95rem, 2.5vw, 1.4rem);
+        margin: 15px 0;
+        opacity: 0;
+        animation: fadeIn 1s ease forwards 1s;
+        font-style: italic;
+        padding: 0 10px;
+      }
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+
+      /* Kue */
+      .cake {
+        position: relative;
+        margin: 20px auto;
+        width: min(220px, 60vw);
+        height: 180px;
+      }
+      .plate {
+        position: absolute;
+        bottom: 0;
+        width: 120%;
+        height: 20px;
+        left: -10%;
+        background: linear-gradient(90deg, #ffd700, #daa520, #ffd700);
+        border-radius: 50%;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+      }
+      .layer {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 10px;
+      }
+      .layer-bottom {
+        bottom: 15px;
+        width: 90%;
+        height: 60px;
+        background: linear-gradient(180deg, #6b3fa0, #4a2c6d);
+        box-shadow: inset 0 -10px 0 rgba(0, 0, 0, 0.2);
+      }
+      .layer-middle {
+        bottom: 70px;
+        width: 72%;
+        height: 50px;
+        background: linear-gradient(180deg, #c77dff, #9d4edd);
+      }
+      .layer-top {
+        bottom: 115px;
+        width: 55%;
+        height: 40px;
+        background: linear-gradient(180deg, #ffd700, #daa520);
+      }
+      .candle {
+        position: absolute;
+        bottom: 155px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 8px;
+        height: 35px;
+        background: repeating-linear-gradient(
+          45deg,
+          #ffd700,
+          #ffd700 4px,
+          #fff 4px,
+          #fff 8px
+        );
+        border-radius: 2px;
+      }
+      .flame {
+        position: absolute;
+        bottom: 190px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 14px;
+        height: 22px;
+        background: radial-gradient(
+          circle at 50% 70%,
+          #fff 0%,
+          #ffeb3b 30%,
+          #ff9800 70%,
+          #ff5722 100%
+        );
+        border-radius: 50% 50% 20% 20%;
+        animation: flicker 0.3s ease-in-out infinite alternate;
+        box-shadow:
+          0 0 20px #ffeb3b,
+          0 0 40px #ff9800;
+      }
+      @keyframes flicker {
+        from {
+          transform: translateX(-50%) scale(1) rotate(-2deg);
+        }
+        to {
+          transform: translateX(-50%) scale(1.1, 0.9) rotate(2deg);
+        }
+      }
+      .flame.out {
+        display: none;
+      }
+
+      /* Balon */
+      .balloon {
+        position: fixed;
+        bottom: -150px;
+        width: 50px;
+        height: 65px;
+        border-radius: 50%;
+        animation: floatUp linear infinite;
+        z-index: 0;
+      }
+      .balloon::after {
+        content: '';
+        position: absolute;
+        bottom: -40px;
+        left: 50%;
+        width: 1px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.6);
+      }
+      @keyframes floatUp {
+        0% {
+          transform: translateY(0) translateX(0);
+          opacity: 1;
+        }
+        50% {
+          transform: translateY(-50vh) translateX(20px);
+        }
+        100% {
+          transform: translateY(-110vh) translateX(-20px);
+          opacity: 0.7;
+        }
+      }
+
+      button {
+        margin-top: 20px;
+        padding: 12px 30px;
+        font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+        font-family: inherit;
+        font-weight: bold;
+        color: #fff;
+        background: linear-gradient(45deg, #6b3fa0, #ffd700);
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        box-shadow: 0 5px 20px rgba(107, 63, 160, 0.6);
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+        z-index: 3;
+        position: relative;
+      }
+      button:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 8px 25px rgba(255, 215, 0, 0.7);
+      }
+      button:active {
+        transform: translateY(0) scale(0.98);
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      /* ============ MODAL SCROLLABLE RESPONSIVE ============ */
+      .modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(20, 10, 40, 0.55);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        z-index: 100;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start; /* ubah ke flex-start agar scroll bisa dimulai dari atas */
+        padding: 20px 15px;
+        opacity: 0;
+        animation: modalFadeIn 1s ease forwards 0.5s;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+      }
+      @keyframes modalFadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+      .modal-overlay.closing {
+        animation: modalFadeOut 0.8s ease forwards;
+      }
+      @keyframes modalFadeOut {
+        to {
+          opacity: 0;
+          visibility: hidden;
+        }
+      }
+
+      /* Custom scrollbar */
+      .modal-overlay::-webkit-scrollbar {
+        width: 10px;
+      }
+      .modal-overlay::-webkit-scrollbar-track {
+        background: rgba(255, 215, 0, 0.1);
+        border-radius: 10px;
+      }
+      .modal-overlay::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, #ffd700, #c77dff);
+        border-radius: 10px;
+        border: 2px solid rgba(20, 10, 40, 0.3);
+      }
+      .modal-overlay::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(180deg, #ffed4e, #d891ff);
+      }
+
+      .modal-card {
+        position: relative;
+        background: linear-gradient(
+          135deg,
+          rgba(74, 44, 109, 0.6),
+          rgba(107, 63, 160, 0.6),
+          rgba(157, 78, 221, 0.6)
+        );
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border: 2px solid rgba(255, 215, 0, 0.4);
+        border-radius: 25px;
+        padding: clamp(25px, 5vw, 45px) clamp(20px, 4vw, 50px);
+        width: 100%;
+        max-width: 600px;
+        margin: auto; /* centering vertical saat konten pendek */
+        text-align: center;
+        box-shadow:
+          0 20px 60px rgba(107, 63, 160, 0.6),
+          inset 0 0 40px rgba(255, 215, 0, 0.1);
+        transform: scale(0.85) translateY(30px);
+        animation: modalCardIn 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards
+          0.7s;
+        overflow: hidden;
+        z-index: 2;
+      }
+      @keyframes modalCardIn {
+        to {
+          transform: scale(1) translateY(0);
+        }
+      }
+
+      .modal-card::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: conic-gradient(
+          from 0deg,
+          transparent,
+          rgba(255, 215, 0, 0.15),
+          transparent 30%
+        );
+        animation: rotateShine 8s linear infinite;
+        pointer-events: none;
+      }
+      @keyframes rotateShine {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Ornamen Bulan Sabit & Bintang */
+      .ornament {
+        position: absolute;
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
+        animation: twinkle 2s ease-in-out infinite;
+        z-index: 2;
+        filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
+      }
+      .ornament.tl {
+        top: 10px;
+        left: 15px;
+      }
+      .ornament.tr {
+        top: 10px;
+        right: 15px;
+        animation-delay: 0.5s;
+      }
+      .ornament.bl {
+        bottom: 10px;
+        left: 15px;
+        animation-delay: 1s;
+      }
+      .ornament.br {
+        bottom: 10px;
+        right: 15px;
+        animation-delay: 1.5s;
+      }
+      @keyframes twinkle {
+        0%,
+        100% {
+          transform: scale(1) rotate(0deg);
+          opacity: 0.8;
+        }
+        50% {
+          transform: scale(1.3) rotate(10deg);
+          opacity: 1;
+        }
+      }
+
+      .arabic-text {
+        font-size: clamp(1.3rem, 4vw, 2.2rem);
+        font-family: 'Traditional Arabic', 'Amiri', 'Arial', serif;
+        color: #ffd700;
+        margin-bottom: 15px;
+        text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+        animation: fadeIn 1s ease forwards 1.2s;
+        opacity: 0;
+        position: relative;
+        z-index: 2;
+        direction: rtl;
+        line-height: 1.5;
+      }
+
+      .modal-title {
+        font-size: clamp(1.4rem, 4.5vw, 2.5rem);
+        margin-bottom: 20px;
+        background: linear-gradient(45deg, #ffd700, #e0aaff, #c77dff, #ffd700);
+        background-size: 200% 200%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: rainbow 4s linear infinite;
+        font-weight: bold;
+        position: relative;
+        z-index: 2;
+        line-height: 1.3;
+      }
+
+      .modal-message {
+        font-size: clamp(0.9rem, 2vw, 1.15rem);
+        line-height: 1.8;
+        color: #fff;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+        margin-bottom: 25px;
+        position: relative;
+        z-index: 2;
+        text-align: justify;
+        word-wrap: break-word;
+      }
+      .modal-message .highlight {
+        color: #ffd700;
+        font-weight: bold;
+      }
+      .modal-message .doa {
+        display: block;
+        margin: 12px 0;
+        padding: clamp(10px, 2vw, 15px);
+        background: rgba(255, 215, 0, 0.1);
+        border-left: 3px solid #ffd700;
+        border-radius: 8px;
+        font-style: italic;
+        text-align: left;
+      }
+      .modal-message .quote {
+        display: block;
+        margin: 15px 0;
+        padding: 12px;
+        background: rgba(199, 125, 255, 0.15);
+        border-radius: 8px;
+        border: 1px dashed rgba(255, 215, 0, 0.4);
+      }
+
+      /* Tombol close sticky di bawah modal */
+      .modal-close {
+        background: linear-gradient(45deg, #ffd700, #daa520);
+        color: #2d1b4e;
+        box-shadow: 0 5px 20px rgba(255, 215, 0, 0.6);
+        position: sticky;
+        bottom: 0;
+        margin-top: 15px;
+        width: 100%;
+        max-width: 280px;
+        padding: 14px 30px;
+        font-size: clamp(1rem, 2.5vw, 1.15rem);
+        z-index: 3;
+      }
+      .modal-close:hover {
+        box-shadow: 0 8px 25px rgba(255, 215, 0, 0.85);
+      }
+
+      /* ============ ANIMASI LOVE UNGU & ISLAMI ============ */
+      .love-container {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 1;
+        border-radius: 25px;
+      }
+      .love {
+        position: absolute;
+        bottom: -60px;
+        font-size: 28px;
+        animation: loveFloat linear infinite;
+        filter: drop-shadow(0 0 8px rgba(199, 125, 255, 0.8));
+        opacity: 0.9;
+      }
+      @keyframes loveFloat {
+        0% {
+          transform: translateY(0) translateX(0) rotate(0deg) scale(1);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        50% {
+          transform: translateY(-50vh) translateX(var(--sway, 30px))
+            rotate(180deg) scale(1.1);
+        }
+        90% {
+          opacity: 0.9;
+        }
+        100% {
+          transform: translateY(-110vh) translateX(calc(var(--sway, 30px) * -1))
+            rotate(360deg) scale(0.8);
+          opacity: 0;
+        }
+      }
+
+      .sparkle {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        background: #ffd700;
+        border-radius: 50%;
+        box-shadow:
+          0 0 10px #ffd700,
+          0 0 20px #c77dff;
+        animation: sparkleFloat linear infinite;
+        pointer-events: none;
+      }
+      @keyframes sparkleFloat {
+        0% {
+          transform: translateY(0) scale(0);
+          opacity: 0;
+        }
+        20% {
+          opacity: 1;
+          transform: translateY(-20vh) scale(1);
+        }
+        80% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-110vh) scale(0.3);
+          opacity: 0;
+        }
+      }
+
+      .bg-crescent {
+        position: absolute;
+        font-size: clamp(10rem, 30vw, 18rem);
+        color: rgba(255, 215, 0, 0.08);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation: bgHeartBeat 3s ease-in-out infinite;
+        pointer-events: none;
+        z-index: 0;
+      }
+      @keyframes bgHeartBeat {
+        0%,
+        100% {
+          transform: translate(-50%, -50%) scale(1) rotate(-15deg);
+          opacity: 0.08;
+        }
+        50% {
+          transform: translate(-50%, -50%) scale(1.1) rotate(-10deg);
+          opacity: 0.12;
+        }
+      }
+
+      /* ============ RESPONSIVE BREAKPOINTS ============ */
+      @media (max-width: 600px) {
+        body {
+          padding: 10px 5px;
+        }
+        .modal-overlay {
+          padding: 10px 8px;
+        }
+        .modal-card {
+          border-radius: 20px;
+        }
+        .ornament.tl {
+          top: 8px;
+          left: 10px;
+        }
+        .ornament.tr {
+          top: 8px;
+          right: 10px;
+        }
+        .ornament.bl {
+          bottom: 8px;
+          left: 10px;
+        }
+        .ornament.br {
+          bottom: 8px;
+          right: 10px;
+        }
+        .modal-message {
+          text-align: left;
+        }
+        .modal-message .doa {
+          padding: 10px 12px;
+        }
+      }
+
+      @media (max-width: 380px) {
+        .modal-card {
+          padding: 20px 15px;
+        }
+        .arabic-text {
+          font-size: 1.2rem;
+        }
+        .ornament {
+          font-size: 1.3rem;
+        }
+        .modal-message {
+          font-size: 0.88rem;
+          line-height: 1.7;
+        }
+      }
+
+      @media (min-width: 1200px) {
+        .modal-card {
+          max-width: 620px;
+        }
+      }
+
+      /* Landscape mode untuk mobile */
+      @media (max-height: 500px) and (orientation: landscape) {
+        .modal-overlay {
+          align-items: flex-start;
+          padding: 10px;
+        }
+        .modal-card {
+          padding: 20px 25px;
+        }
+        .ornament {
+          font-size: 1.3rem;
+        }
+        .arabic-text {
+          font-size: 1.2rem;
+          margin-bottom: 8px;
+        }
+        .modal-title {
+          margin-bottom: 10px;
+        }
+        .modal-message {
+          margin-bottom: 15px;
+          line-height: 1.5;
+        }
+        .modal-message .doa {
+          margin: 8px 0;
+          padding: 8px 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="confetti"></canvas>
+
+    <div class="content">
+      <h1>🌙 Barakallah Fii Umrik 🌙</h1>
+      <div class="name">Iis Hidayati</div>
+      <p class="message">
+        ✨ Semoga Allah memberkahi usiamu dan melimpahkan rahmat-Nya ✨
+      </p>
+
+      <div class="cake">
+        <div class="plate"></div>
+        <div class="layer layer-bottom"></div>
+        <div class="layer layer-middle"></div>
+        <div class="layer layer-top"></div>
+        <div class="candle"></div>
+        <div class="flame" id="flame"></div>
+      </div>
+
+      <button id="blowBtn">🌬️ Tiup Lilin</button>
+      <button id="celebrateBtn" class="hidden">🎊 Rayakan Lagi!</button>
+      <p>
+        <small>by <strong>is.tira</strong></small>
+      </p>
+    </div>
+
+    <!-- ============ MODAL ISLAMI SCROLLABLE ============ -->
+    <div class="modal-overlay" id="modal">
+      <div class="modal-card">
+        <div class="bg-crescent">☪</div>
+        <div class="love-container" id="loveContainer"></div>
+
+        <span class="ornament tl">🌙</span>
+        <span class="ornament tr">⭐</span>
+        <span class="ornament bl">⭐</span>
+        <span class="ornament br">🌙</span>
+
+        <div class="arabic-text">بَارَكَ اللهُ فِيْ عُمْرِكَ</div>
+        <h2 class="modal-title">🤲 Barakallah Fii Umrik 🤲</h2>
+        <div class="modal-message">
+          <span class="highlight"
+            >Ya Allah, Yang Maha Pengasih lagi Maha Penyayang,</span
+          >
+          <br />
+          Di hari yang penuh berkah ini, aku memanjatkan do'a dari hati ini
+          untukmu wanita terfavoritku
+          <strong>(Iis Hidayati binti Ahmad bin Kuba)</strong>:
+
+          <span class="doa">
+            🌟 Semoga Allah <span class="highlight">memberkahi usiamu</span>,
+            menjadikan setiap detiknya penuh ketaatan dan keimanan.
+          </span>
+
+          <span class="doa">
+            🌟 Semoga Allah
+            <span class="highlight">melimpahkan kesehatan</span>, rezeki yang
+            halal lagi berkah, dan kemudahan dalam setiap urusan.
+          </span>
+
+          <span class="doa">
+            🌟 Semoga Allah
+            <span class="highlight">menjaga iman dan Islam-mu</span>, serta
+            mengumpulkanmu bersama orang-orang yang dicintai-Nya di surga kelak.
+          </span>
+
+          <span class="doa">
+            🌟 Semoga menjadi pribadi yang
+            <span class="highlight">lebih baik dari tahun sebelumnya</span>,
+            semakin dekat dengan Allah, dan bermanfaat bagi sesama.
+          </span>
+
+          <span class="doa">
+            🌟 Semoga Allah
+            <span class="highlight">mudahkan segala urusanmu</span>, lapangkan
+            rezekimu, dan jadikan setiap langkahmu dalam ketaatan kepada-Nya.
+          </span>
+
+          <span class="doa">
+            🌟 Semoga Allah
+            <span class="highlight">lindungi dirimu dan keluarga</span> dari
+            segala marabahaya, serta berikan kebahagiaan dunia dan akhirat.
+          </span>
+
+          <span class="doa">
+            🌟 Semoga Iis <span class="highlight">memaafkanku</span> dari segala
+            kesalahanku selama ini. Terima kasih selalu untuk semua kebaikanmu.
+          </span>
+
+          <span class="quote">
+            <em
+              >"Barangsiapa yang menempuh jalan untuk mencari ilmu, maka Allah
+              akan memudahkan baginya jalan menuju surga."</em
+            >
+            <br />
+            <small style="color: #ffd700">— HR. Muslim</small>
+          </span>
+
+          <span class="quote">
+            <em
+              >"Dan apabila hamba-hamba-Ku bertanya kepadamu tentang Aku, maka
+              (jawablah), bahwasanya Aku adalah dekat."</em
+            >
+            <br />
+            <small style="color: #ffd700">— QS. Al-Baqarah: 186</small>
+          </span>
+
+          <br />
+          <span class="highlight" style="font-size: 1.2em"
+            >آمين يا رب العالمين</span
+          >
+          <br />
+          <em>Aamiin Yaa Rabbal 'Aalamiin</em> 🤲
+        </div>
+        <button class="modal-close" id="modalClose">🤲 Aamiin ✨</button>
+      </div>
+    </div>
+
+    <script>
+      /* ====== CONFETTI ====== */
+      const canvas = document.getElementById('confetti')
+      const ctx = canvas.getContext('2d')
+      let W, H
+      function resize() {
+        W = canvas.width = window.innerWidth
+        H = canvas.height = window.innerHeight
+      }
+      resize()
+      window.addEventListener('resize', resize)
+
+      const colors = [
+        '#ffd700',
+        '#e0aaff',
+        '#c77dff',
+        '#9d4edd',
+        '#7b2cbf',
+        '#ffffff',
+        '#daa520',
+      ]
+      const confetti = []
+      for (let i = 0; i < 120; i++) {
+        confetti.push({
+          x: Math.random() * W,
+          y: Math.random() * H - H,
+          r: Math.random() * 6 + 4,
+          d: Math.random() * 5 + 2,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          tilt: Math.random() * 10,
+          tiltAngle: 0,
+          tiltAngleInc: Math.random() * 0.1 + 0.05,
+        })
+      }
+
+      function drawConfetti() {
+        ctx.clearRect(0, 0, W, H)
+        confetti.forEach((c) => {
+          ctx.beginPath()
+          ctx.fillStyle = c.color
+          ctx.ellipse(c.x, c.y, c.r, c.r / 2, c.tilt, 0, Math.PI * 2)
+          ctx.fill()
+        })
+        updateConfetti()
+      }
+      function updateConfetti() {
+        confetti.forEach((c) => {
+          c.y += c.d
+          c.tiltAngle += c.tiltAngleInc
+          c.x += Math.sin(c.tiltAngle) * 1.5
+          c.tilt = Math.sin(c.tiltAngle) * 15
+          if (c.y > H) {
+            c.x = Math.random() * W
+            c.y = -10
+          }
+        })
+      }
+
+      /* ====== FIREWORKS ====== */
+      const fireworks = []
+      function createFirework(x, y) {
+        const color = colors[Math.floor(Math.random() * colors.length)]
+        for (let i = 0; i < 40; i++) {
+          const angle = ((Math.PI * 2) / 40) * i
+          const speed = Math.random() * 4 + 2
+          fireworks.push({
+            x,
+            y,
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed,
+            life: 1,
+            color,
+          })
+        }
+      }
+      function drawFireworks() {
+        for (let i = fireworks.length - 1; i >= 0; i--) {
+          const f = fireworks[i]
+          ctx.beginPath()
+          ctx.fillStyle = f.color
+          ctx.globalAlpha = f.life
+          ctx.arc(f.x, f.y, 3, 0, Math.PI * 2)
+          ctx.fill()
+          f.x += f.vx
+          f.y += f.vy
+          f.vy += 0.05
+          f.life -= 0.015
+          if (f.life <= 0) fireworks.splice(i, 1)
+        }
+        ctx.globalAlpha = 1
+      }
+
+      function animate() {
+        drawConfetti()
+        drawFireworks()
+        requestAnimationFrame(animate)
+      }
+      animate()
+
+      /* ====== BALON ====== */
+      function createBalloon() {
+        const b = document.createElement('div')
+        b.className = 'balloon'
+        b.style.left = Math.random() * 100 + 'vw'
+        b.style.background = `radial-gradient(circle at 30% 30%, #fff, ${colors[Math.floor(Math.random() * colors.length)]})`
+        b.style.animationDuration = Math.random() * 5 + 6 + 's'
+        document.body.appendChild(b)
+        setTimeout(() => b.remove(), 12000)
+      }
+      setInterval(createBalloon, 800)
+      for (let i = 0; i < 5; i++) setTimeout(createBalloon, i * 300)
+
+      /* ====== ANIMASI LOVE UNGU & ISLAMI DI MODAL ====== */
+      const loveContainer = document.getElementById('loveContainer')
+      const islamicEmojis = ['🤲', '🌙', '⭐', '✨', '💜', '💟', '🕌', '📿']
+      const purpleShades = [
+        '#e0aaff',
+        '#c77dff',
+        '#9d4edd',
+        '#7b2cbf',
+        '#5a189a',
+        '#d891ff',
+      ]
+
+      function createLove() {
+        const love = document.createElement('div')
+        love.className = 'love'
+        const isPurple = Math.random() < 0.5
+        love.textContent = isPurple
+          ? Math.random() < 0.7
+            ? '💜'
+            : '💟'
+          : islamicEmojis[Math.floor(Math.random() * islamicEmojis.length)]
+
+        const size = Math.random() * 28 + 18
+        love.style.fontSize = size + 'px'
+        love.style.left = Math.random() * 100 + '%'
+
+        const duration = Math.random() * 4 + 5
+        love.style.animationDuration = duration + 's'
+        love.style.setProperty('--sway', Math.random() * 80 - 40 + 'px')
+
+        const glowColor =
+          purpleShades[Math.floor(Math.random() * purpleShades.length)]
+        love.style.filter = `drop-shadow(0 0 ${size / 3}px ${glowColor})`
+
+        loveContainer.appendChild(love)
+        setTimeout(() => love.remove(), duration * 1000)
+      }
+
+      function createSparkle() {
+        const s = document.createElement('div')
+        s.className = 'sparkle'
+        s.style.left = Math.random() * 100 + '%'
+        s.style.bottom = '0'
+        const size = Math.random() * 6 + 3
+        s.style.width = size + 'px'
+        s.style.height = size + 'px'
+        const duration = Math.random() * 5 + 4
+        s.style.animationDuration = duration + 's'
+        loveContainer.appendChild(s)
+        setTimeout(() => s.remove(), duration * 1000)
+      }
+
+      let loveInterval = setInterval(() => {
+        createLove()
+        if (Math.random() < 0.5) createSparkle()
+      }, 300)
+
+      setTimeout(() => {
+        for (let i = 0; i < 20; i++) {
+          setTimeout(createLove, i * 80)
+        }
+        for (let i = 0; i < 15; i++) {
+          setTimeout(createSparkle, i * 100)
+        }
+      }, 1500)
+
+      /* ====== MODAL CONTROL ====== */
+      const modal = document.getElementById('modal')
+      document.getElementById('modalClose').addEventListener('click', () => {
+        modal.classList.add('closing')
+        clearInterval(loveInterval)
+        setTimeout(() => modal.remove(), 800)
+        for (let i = 0; i < 12; i++) {
+          setTimeout(
+            () => createFirework(Math.random() * W, Math.random() * H * 0.6),
+            i * 150,
+          )
+        }
+      })
+
+      /* ====== INTERAKSI LILIN ====== */
+      const flame = document.getElementById('flame')
+      const blowBtn = document.getElementById('blowBtn')
+      const celebrateBtn = document.getElementById('celebrateBtn')
+
+      blowBtn.addEventListener('click', () => {
+        flame.classList.add('out')
+        blowBtn.classList.add('hidden')
+        celebrateBtn.classList.remove('hidden')
+        let count = 0
+        const fwInterval = setInterval(() => {
+          createFirework(Math.random() * W, Math.random() * H * 0.6)
+          count++
+          if (count > 15) clearInterval(fwInterval)
+        }, 250)
+      })
+
+      celebrateBtn.addEventListener('click', () => {
+        flame.classList.remove('out')
+        celebrateBtn.classList.add('hidden')
+        blowBtn.classList.remove('hidden')
+        for (let i = 0; i < 8; i++) {
+          setTimeout(
+            () => createFirework(Math.random() * W, Math.random() * H * 0.6),
+            i * 200,
+          )
+        }
+      })
+
+      document.addEventListener('click', (e) => {
+        if (e.target.tagName === 'BUTTON') return
+        createFirework(e.clientX, e.clientY)
+      })
+    </script>
+  </body>
+</html>
