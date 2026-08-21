@@ -150,6 +150,7 @@
       }
       .flame.out { display: none; }
 
+      /* ============ BALON BIASA ============ */
       .balloon {
         position: fixed;
         bottom: -150px;
@@ -172,6 +173,56 @@
         0% { transform: translateY(0) translateX(0); opacity: 1; }
         50% { transform: translateY(-50vh) translateX(20px); }
         100% { transform: translateY(-110vh) translateX(-20px); opacity: 0.7; }
+      }
+
+      /* ============ BALON LOVE (BARU!) ============ */
+      .balloon-love {
+        position: fixed;
+        bottom: -150px;
+        width: 70px;
+        height: 85px;
+        border-radius: 50%;
+        animation: floatUp linear infinite;
+        z-index: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow:
+          inset -8px -10px 20px rgba(0, 0, 0, 0.2),
+          inset 8px 10px 20px rgba(255, 255, 255, 0.3),
+          0 0 25px rgba(199, 125, 255, 0.6);
+      }
+      .balloon-love::before {
+        content: attr(data-emoji);
+        font-size: 32px;
+        position: relative;
+        z-index: 2;
+        filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.8));
+        animation: heartPulse 1.5s ease-in-out infinite;
+      }
+      .balloon-love::after {
+        content: '';
+        position: absolute;
+        bottom: -45px;
+        left: 50%;
+        width: 1px;
+        height: 45px;
+        background: rgba(255, 255, 255, 0.7);
+        box-shadow: 0 0 5px rgba(199, 125, 255, 0.5);
+      }
+      @keyframes heartPulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.2); }
+      }
+
+      /* Efek kilau pada balon love */
+      .balloon-love::before {
+        content: attr(data-emoji);
+        font-size: 32px;
+        position: relative;
+        z-index: 2;
+        filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.8));
+        animation: heartPulse 1.5s ease-in-out infinite;
       }
 
       button {
@@ -355,13 +406,13 @@
       }
       .modal-close:hover { box-shadow: 0 8px 25px rgba(255, 215, 0, 0.85); }
 
-      /* ============ LOVE CONTAINER - DIPINDAH KE OVERLAY ============ */
+      /* ============ LOVE CONTAINER ============ */
       .love-container {
         position: fixed;
         inset: 0;
         pointer-events: none;
         overflow: hidden;
-        z-index: 101; /* di atas modal-card (z-index: 2) */
+        z-index: 101;
       }
 
       .love {
@@ -431,6 +482,8 @@
         .ornament.br { bottom: 8px; right: 10px; }
         .modal-message { text-align: left; }
         .modal-message .doa { padding: 10px 12px; }
+        .balloon-love { width: 55px; height: 68px; }
+        .balloon-love::before { font-size: 24px; }
       }
 
       @media (max-width: 380px) {
@@ -477,7 +530,6 @@
 
     <!-- ============ MODAL ISLAMI SCROLLABLE ============ -->
     <div class="modal-overlay" id="modal">
-      <!-- ✅ LOVE CONTAINER DIPINDAH KE SINI (di luar modal-card) -->
       <div class="love-container" id="loveContainer"></div>
       <div class="bg-crescent">☪</div>
 
@@ -612,18 +664,53 @@
       }
       animate()
 
-      /* ====== BALON ====== */
+      /* ====== BALON + BALON LOVE (DIPERBAHARUI!) ====== */
+      // Warna balon dominan ungu + aksen emas
+      const balloonColors = [
+        'radial-gradient(circle at 30% 30%, #fff, #c77dff, #7b2cbf)',  // ungu muda
+        'radial-gradient(circle at 30% 30%, #fff, #9d4edd, #5a189a)',  // ungu tua
+        'radial-gradient(circle at 30% 30%, #fff, #e0aaff, #c77dff)',  // lavender
+        'radial-gradient(circle at 30% 30%, #fff, #ffd700, #daa520)',  // emas
+        'radial-gradient(circle at 30% 30%, #fff, #d891ff, #9d4edd)',  // ungu pink
+      ]
+
+      // Emoji untuk balon love
+      const loveEmojis = ['💜', '💟', '💗', '💖', '💕', '🤍', '🌙', '⭐']
+
       function createBalloon() {
         const b = document.createElement('div')
-        b.className = 'balloon'
+        const isLoveBalloon = Math.random() < 0.5 // 50% balon love, 50% balon biasa
+
+        if (isLoveBalloon) {
+          // ====== BALON LOVE ======
+          b.className = 'balloon-love'
+          const emoji = loveEmojis[Math.floor(Math.random() * loveEmojis.length)]
+          b.setAttribute('data-emoji', emoji)
+
+          // Warna balon love: dominan ungu dengan glow
+          const loveBalloonColors = [
+            'radial-gradient(circle at 30% 30%, #fff, #e0aaff, #c77dff)',
+            'radial-gradient(circle at 30% 30%, #fff, #d891ff, #9d4edd)',
+            'radial-gradient(circle at 30% 30%, #fff, #c77dff, #7b2cbf)',
+            'radial-gradient(circle at 30% 30%, #fff, #ffd700, #c77dff)',
+          ]
+          b.style.background = loveBalloonColors[Math.floor(Math.random() * loveBalloonColors.length)]
+        } else {
+          // ====== BALON BIASA ======
+          b.className = 'balloon'
+          b.style.background = balloonColors[Math.floor(Math.random() * balloonColors.length)]
+        }
+
         b.style.left = Math.random() * 100 + 'vw'
-        b.style.background = `radial-gradient(circle at 30% 30%, #fff, ${colors[Math.floor(Math.random() * colors.length)]})`
-        b.style.animationDuration = Math.random() * 5 + 6 + 's'
+        b.style.animationDuration = (Math.random() * 5 + 6) + 's'
+
         document.body.appendChild(b)
         setTimeout(() => b.remove(), 12000)
       }
-      setInterval(createBalloon, 800)
-      for (let i = 0; i < 5; i++) setTimeout(createBalloon, i * 300)
+
+      setInterval(createBalloon, 700)
+      // Burst awal
+      for (let i = 0; i < 6; i++) setTimeout(createBalloon, i * 250)
 
       /* ====== ANIMASI LOVE UNGU & ISLAMI DI MODAL ====== */
       const loveContainer = document.getElementById('loveContainer')
